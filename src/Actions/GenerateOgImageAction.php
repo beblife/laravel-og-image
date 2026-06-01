@@ -93,13 +93,13 @@ class GenerateOgImageAction
                 return;
             }
 
-            $pageUrl = Uri::of($pageUrl)->withQuery([
+            $previewUrl = Uri::of($pageUrl)->withQuery([
                 config('og-image.preview_parameter', 'ogimage') => '',
             ]);
 
             try {
                 app(OgImageGenerator::class)->generate(
-                    $pageUrl->toString(),
+                    $previewUrl,
                     $path,
                     $cached['width'] ?? null,
                     $cached['height'] ?? null,
